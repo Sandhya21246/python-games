@@ -1,0 +1,68 @@
+def SlideLabel():
+    global count,slideword
+    text="Welcome to typing speed increaser game"
+    if (count>=len(text)):
+        count=0
+        slideword=''
+    slideword +=text[count]
+    count+=1
+    fontLabel.configure(text=slideword)
+    fontLabel.after(100,SlideLabel)
+
+def startGame(event):
+    print(ent.get())
+    ent.delete(0,END)
+
+
+
+from tkinter import*
+root=Tk()
+root.title("Typing speed increaser game")
+root.geometry('700x600')
+root.configure(bg='powder blue')
+
+
+
+
+score=0
+timeleft=60
+count=0
+slideword=''
+
+
+fontLabel=Label(root,text="",font=("arial",25,'bold italic'),bg='powder blue',fg='red',width='35')
+fontLabel.place(x=30,y=20)
+SlideLabel()
+
+wordLabel=Label(root,text="Mango",font=("arial",20,'bold italic'),bg='powder blue')
+wordLabel.place(x=150,y=200)
+
+scoreLabel=Label(root,text="Your Score:",font=("arial",20,'bold italic'),bg='powder blue',fg='blue')
+scoreLabel.place(x=10,y=100)
+
+scoreLabelcount=Label(root,text=score,font=("arial",20,'bold italic'),bg='powder blue',fg='blue')
+scoreLabelcount.place(x=15,y=150)
+
+timeLabel=Label(root,text="Time Left:",font=("arial",20,'bold italic'),bg='powder blue',fg='blue')
+timeLabel.place(x=450,y=100)
+
+timerLabelLeft=Label(root,text=timeleft,font=("arial",20,'bold italic'),bg='powder blue',fg='blue')
+timerLabelLeft.place(x=500,y=150)
+
+TypePlayLabel=Label(root,text="Type and Hit Enter button",font=("arial",30,'bold italic'),bg='powder blue',fg='grey')
+TypePlayLabel.place(x=10,y=500)
+
+
+ent=Entry(root,font=("arial",20,'bold italic'),bg='powder blue',bd=10,justify='center')
+ent.place(x=100,y=300)
+ent.focus_set()
+
+
+
+
+
+
+
+
+
+root.mainloop()
